@@ -1,76 +1,220 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Teste</title>
-
-  <style>
-    body {
-      background: #0e0e11;
-      color: #f1f1f1;
-      font-family: system-ui, sans-serif;
-      display: flex;
-      justify-content: center;
-      padding: 40px;
-    }
-
-    .sheet {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 900px;
-      width: 100%;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .field input {
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid #444;
-      color: #fff;
-      text-align: center;
-      font-size: 1rem;
-      padding: 6px 0;
-      width: 100%;
-      outline: none;
-    }
-
-    .field span {
-      margin-top: 6px;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #aaa;
-    }
-
-    @media (max-width: 768px) {
-      .sheet {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .sheet {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>???</title>
 </head>
 
 <body>
-  <div class="sheet">
-    <div class="field"><input type="text"><span>Nome</span></div>
-    <div class="field"><input type="text"><span>Classe e Nível</span></div>
-    <div class="field"><input type="text"><span>Raça</span></div>
-    <div class="field"><input type="text"><span>Antecedente</span></div>
-    <div class="field"><input type="text"><span>Tendência</span></div>
-    <div class="field"><input type="text"><span>Jogador</span></div>
+  <h3 style="text-align: center; margin: 0; color: rgb(255, 100, 0);">???</h3>
+  <hr style="border: none; height: 1px; background-color: rgb(255, 100, 0);">
+  <!-- Contem vida, vida temporaria, class armor, iniciativa, deslocamento, dados de vida, teste contra a morte. -->
+  <div id="status">
+    <div id="infos">
+      <div id="proficiency-bonus-display">
+        <div id="proficiency-bonus" class="editable" contenteditable="true">+3</div><span id="proficiency-bonus-label"
+          class="editable-subtext">Profici.<!--ic. iência --></span>
+      </div>
+      <div id="ac-display">
+        <div id="ac" class="editable" contenteditable="true">14</div><span id="ac-label"
+          class="editable-subtext">CA</span>
+      </div>
+      <div id="iniciative-display">
+        <div id="iniciative" class="editable" contenteditable="true">2</div><span id="ac-label"
+          class="editable-subtext">Iniciativa</span>
+      </div>
+      <div id="movement-display">
+        <div id="movement" class="editable" contenteditable="true">9m/6q</div><span id="ac-label"
+          class="editable-subtext">Desloc.</span>
+      </div>
+      <div id="inspiration-display">
+        <div id="inspiration" class="editable" contenteditable="true"></div><span id="ac-label"
+          class="editable-subtext">Inspiração</span>
+      </div>
+    </div>
+    <div id="life-bar-display">
+      <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.85em; margin: 0; text-align: center;">VIDA</p>
+      <div id="life-bar">
+        <div id="life-amount"></div><span id="current-life" contenteditable="true">56</span> / <span id="max-life"
+          contenteditable="true">56</span>
+      </div>
+      <div id="life-bar-controls">
+        <div>⮜⮜⮜</div>
+        <div>⮜⮜</div>
+        <div>⮜</div>
+        <div>-</div>
+        <div contenteditable="true" style="outline: none; text-decoration: underline solid 1px #444;">0</div>
+        <div>+</div>
+        <div>⮞</div>
+        <div>⮞⮞</div>
+        <div>⮞⮞⮞</div>
+      </div>
+    </div>
+    <div id="dice-saves">
+      <div id="life-dice">
+        <div class="editable" contenteditable="true">6 / 6d6</div><span class="editable-subtext">Dados de Vida</span>
+      </div>
+      <div id="death-saving">
+        <div class="editable">S
+          <input type="checkbox" name="" id="">
+          <input type="checkbox" name="" id="">
+          <input type="checkbox" name="" id=""> | <input type="checkbox" name="" id="">
+          <input type="checkbox" name="" id="">
+          <input type="checkbox" name="" id="">
+          F
+        </div>
+        <span class="editable-subtext">Testes Contra a Morte</span>
+      </div>
+    </div>
+    <div id="attributes">
+      <div class="att">
+        <span>For</span>
+        <span contenteditable="true">9</span>
+        <span contenteditable="true" class="mod">-1</span>
+        <input type="checkbox" name="" id=""><span contenteditable="true">-1</span>
+      </div>
+      <div class="att">
+        <span>Des</span>
+        <span contenteditable="true">14</span>
+        <span contenteditable="true" class="mod">+2</span>
+        <input type="checkbox" name="" id=""><span contenteditable="true">+2</span>
+      </div>
+      <div class="att">
+        <span>Con</span>
+        <span contenteditable="true">18</span>
+        <span contenteditable="true" class="mod">+4</span>
+        <input type="checkbox" name="" id=""><span contenteditable="true">+4</span>
+      </div>
+      <div class="att">
+        <span>Int</span>
+        <span contenteditable="true">20</span>
+        <span contenteditable="true" class="mod">+5</span>
+        <input type="checkbox" name="" id=""><span contenteditable="true">+8</span>
+      </div>
+      <div class="att">
+        <span>Sab</span>
+        <span contenteditable="true">14</span>
+        <span contenteditable="true" class="mod">+2</span>
+        <input type="checkbox" name="" id=""><span contenteditable="true">+5</span>
+      </div>
+      <div class="att">
+        <span>Car</span>
+        <span contenteditable="true">11</span>
+        <span contenteditable="true" class="mod">0</span>
+        <input type="checkbox" name="" id=""><span contenteditable="true">0</span>
+      </div>
+    </div>
+    <div id="resistance-test-label" style="text-align: center; margin-bottom: 1%;">
+      <div class="editable"></div>
+      <span class="editable-subtext">Testes de Resistência</span>
+    </div>
   </div>
+  <div id="skills">
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">2</span>
+      <span>Acrobacia </span><span contenteditable="true" style="color: #666;">(Des)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">8</span>
+      <span>Arcanismo </span><span contenteditable="true" style="color: #666;">(Int)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">-1</span>
+      <span>Atletismo </span><span contenteditable="true" style="color: #666;">(For)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">0</span>
+      <span>Atuação </span><span contenteditable="true" style="color: #666;">(Car)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">0</span>
+      <span>Blefar </span><span contenteditable="true" style="color: #666;">(Car)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">2</span>
+      <span>Furtividade </span><span contenteditable="true" style="color: #666;">(Des)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">8</span>
+      <span>História </span><span contenteditable="true" style="color: #666;">(Int)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">0</span>
+      <span>Intimidação </span><span contenteditable="true" style="color: #666;">(Car)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">5</span>
+      <span>Intuição </span><span contenteditable="true" style="color: #666;">(Sab)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">5</span>
+      <span>Investigação </span><span contenteditable="true" style="color: #666;">(Int)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">2</span>
+      <span>Lidar com Animais </span><span contenteditable="true" style="color: #666;">(Sab)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">5</span>
+      <span>Medicina </span><span contenteditable="true" style="color: #666;">(Sab)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">5</span>
+      <span>Natureza </span><span contenteditable="true" style="color: #666;">(Int)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">5</span>
+      <span>Percepção </span><span contenteditable="true" style="color: #666;">(Sab)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">0</span>
+      <span>Persuasão </span><span contenteditable="true" style="color: #666;">(Car)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">2</span>
+      <span>Prestidigitação </span><span contenteditable="true" style="color: #666;">(Des)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">5</span>
+      <span>Religião </span><span contenteditable="true" style="color: #666;">(Int)</span>
+    </div>
+    <div class="skill">
+      <input type="checkbox" name="" id="">
+      <span contenteditable="true" style="text-decoration: underline #444;">2</span>
+      <span>Sobrevivência </span><span contenteditable="true" style="color: #666;">(Sab)</span>
+    </div>
+  </div>
+  <div id="passive-perception-display" style="text-align: center; margin-top: 4%;">
+    <div class="editable">15</div>
+    <span class="editable-subtext">Sabedoria Passiva (Percepção)</span>
+  </div>
+  </div>
+  <script src="script.js"></script>
 </body>
+
 </html>

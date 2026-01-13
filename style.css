@@ -1,56 +1,154 @@
-body {
-  background: #0e0e11;
-  color: #f1f1f1;
-  font-family: system-ui, sans-serif;
-}
-
-.sheet {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 900px;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.field input {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #444;
-  color: #fff;
-  text-align: center;
-  font-size: 1rem;
-  padding: 4px 0;
-  width: 100%;
-  outline: none;
-}
-
-.field input:focus {
-  border-bottom-color: #888;
-}
-
-.field span {
-  margin-top: 6px;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #aaa;
-}
-
-/* Tablet */
-@media (max-width: 768px) {
-  .sheet {
-    grid-template-columns: repeat(2, 1fr);
-  }
+* {
+	font-family: "Roboto Mono", monospace;
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: normal;
+	background: black;
 }
 
 /* Celular */
-@media (max-width: 480px) {
-  .sheet {
-    grid-template-columns: 1fr;
+@media (max-width: 768px) {
+	body {
+		color: rgb(255, 120, 0);
+		color: #f1f1f1;
+	}
+
+	#status {
+	}
+
+	#infos {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+	}
+
+	#infos > div {
+		margin: 2%;
+		text-align: center;
+	}
+
+	.editable {
+		border-bottom: 1px solid #444;
+		text-align: center;
+		font-size: 1rem;
+		outline: none;
+	}
+
+	.editable-subtext {
+		font-size: 0.7rem;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: #aaa;
+	}
+
+	#life-bar-display {
+	}
+
+	#life-bar {
+		width: 95%;
+		background: #111;
+		border: solid #444;
+		margin: 0 auto;
+		text-align: center;
+		outline: none;
+		padding: 1%;
+		overflow: hidden;
+		position: relative;
+	}
+
+	#life-amount {
+		height: 100%;
+		width: 100%;
+		background: linear-gradient(90deg, #f00, #ff4500);
+		transition: width 0.3s ease;
+	}
+
+	#life-bar > span {
+		outline: none;
+		background: none;
+	}
+
+	#life-bar-controls {
+		display: flex;
+		justify-content: space-evenly;
+	}
+
+	#life-bar-controls > div {
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 0.85em;
+		margin: 0;
+		text-align: center;
+	}
+
+	#dice-saves {
+		display: flex;
+		justify-content: space-evenly;
+		margin-top: 3.5%;
+	}
+
+	#death-saving {
+		text-align: center;
+	}
+
+	input {
+		margin: 0;
+		border-radius: 50%;
+	}
+
+	#attributes-label,
+	#attributes {
+		display: flex;
+		justify-content: space-around;
+		margin-top: 3.5%;
+    text-align: center;
+	}
+
+	.att {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		outline: none;
+	}
+
+	.mod {
+		color: #777;
+		outline: none;
+		text-decoration: overline;
+	}
+
+	.att > span {
+		outline: none;
+	}
+
+	#resistance-saves {
+		text-align: center;
+		margin-top: 2%;
+    margin-bottom: 2%;
+	}
+
+	#saves-content {
+		display: flex;
+		justify-content: space-evenly;
+	}
+
+	#skill {
+	}
+
+	.skill {
+		font-size: 0.80em;
+    justify-content: flex-end;
+    margin-left: 25%;
+    outline: none;
+	}
+  .skill > span {
+    outline: none;
   }
+}
+
+/* PC */
+@media (min-width: 769px) {
+	body {
+		color: #f1f1f1;
+		color: rgb(85, 0, 255);
+	}
 }
