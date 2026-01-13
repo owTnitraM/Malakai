@@ -1,0 +1,48 @@
+/* Celular */
+@media (max-width: 768px) {
+	body {
+		background: black;
+		color: rgb(250, 250, 250);
+		font-size: 1em;
+	}
+
+	#info-geral {
+		display: inline-flex;
+		justify-content: center;
+		width: 95%;
+		background-color: rgb(78, 78, 78);
+		text-align: center;
+		text-decoration: overline 1px rgba(255, 255, 255, 0.5);
+		margin: 0 auto;
+		font-size: 0.80em;
+		flex-wrap: wrap;
+	}
+
+	#info-geral > div {
+		margin-right: 4%;
+	}
+
+	footer {
+		display: inline-flex;
+		width: 95%;
+		align-items: flex-end;
+		margin: 0 auto;
+		text-align: center;
+		/* flex-direction: row-reverse; */
+		background-color: rgb(78, 78, 78);
+        flex-wrap: nowrap;
+	}
+	footer > div {
+		margin: 0.5%;
+		border: solid 1px orangered;
+		padding: 0.5%;
+	}
+}
+
+/* PC */
+@media (min-width: 769px) {
+	body {
+		background: black;
+		color: rgb(85, 0, 255);
+	}
+}

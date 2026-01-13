@@ -1,0 +1,56 @@
+body {
+  background: #0e0e11;
+  color: #f1f1f1;
+  font-family: system-ui, sans-serif;
+}
+
+.sheet {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 900px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.field input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #444;
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  padding: 4px 0;
+  width: 100%;
+  outline: none;
+}
+
+.field input:focus {
+  border-bottom-color: #888;
+}
+
+.field span {
+  margin-top: 6px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .sheet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Celular */
+@media (max-width: 480px) {
+  .sheet {
+    grid-template-columns: 1fr;
+  }
+}
