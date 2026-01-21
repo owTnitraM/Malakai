@@ -10,153 +10,72 @@
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
     <style>
-        /* Reset / Base */
-        * {
-            box-sizing: border-box;
-            font-family: "Roboto Mono", monospace;
-            background: #000;
-            color: #f1f1f1;
+        .checkbox-wrapper {
+            position: relative;
+            width: 24px;
+            height: 24px;
+        }
+
+        /* O segredo: o input invisível fica por cima de tudo */
+        .native-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+            /* Garante que o clique atinja o input */
             margin: 0;
-            padding: 0;
         }
 
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-
-        /* Título */
-        h3 {
-            text-align: center;
-            color: rgb(255, 100, 0);
-            margin-bottom: 4px;
-        }
-
-        hr {
-            border: none;
-            height: 1px;
-            background-color: rgb(255, 100, 0);
-            width: 80%;
-            margin-bottom: 20px;
-        }
-
-        /* Infos flexível e responsivo */
-        #infos {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+        /* O quadrado (borda) */
+        .visual-box {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 900px;
+            height: 100%;
+            border: 2px solid #333;
+            background-color: white;
+            z-index: 1;
+            /* Fica atrás do input invisível */
+            box-sizing: border-box;
         }
 
-        /* Cada campo */
-        .field {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 120px;
-            /* tamanho mínimo decente */
+        /* O preenchimento quadrado interno */
+        .visual-box::after {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background-color: orangered;
+            opacity: 0;
+            /* Escondido por padrão */
+            transition: opacity 0.1s ease;
         }
 
-        /* Campos editáveis */
-        .editable {
-            width: 100%;
-            min-height: 1.4em;
-            text-align: center;
-            background: transparent;
-            color: #fff;
-            border: none;
-            border-bottom: 1px solid #444;
-            font-size: 1rem;
-            outline: none;
+        /* Quando o input (que está por cima) for marcado, mostra o preenchimento no span (que está atrás) */
+        .native-input:checked~.visual-box::after {
+            opacity: 1;
         }
 
-        .editable:focus {
-            border-bottom-color: #888;
-        }
-
-        /* Label */
-        .field span {
-            margin-top: 4px;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            color: #aaa;
-            text-align: center;
-        }
-
-        /* Life Bar */
-        #life-bar {
-            margin-top: 20px;
-            font-size: 1.2rem;
-        }
-
-        /* Responsivo: tablets e celulares */
-        @media (max-width: 768px) {
-            #infos {
-                gap: 16px;
-            }
-
-            .field {
-                width: 90px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            #infos {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .field {
-                width: 60%;
-            }
+        /* Opcional: muda a borda quando marcado */
+        .native-input:checked~.visual-box {
+            /* border-color: #2196F3; */
         }
     </style>
     <title>Ficha RPG</title>
 </head>
 
 <body>
-    <h3>Malakai</h3>
-    <hr>
-
-    <!-- Status -->
-    <div id="status">
-        <div id="infos">
-            <div class="field">
-                <div id="proficiency-bonus" class="editable" contenteditable="true">+3</div>
-                <span>Proficiência</span>
-            </div>
-
-            <div class="field">
-                <div id="ac" class="editable" contenteditable="true">14</div>
-                <span>CA</span>
-            </div>
-
-            <div class="field">
-                <div id="initiative" class="editable" contenteditable="true">2</div>
-                <span>Iniciativa</span>
-            </div>
-
-            <div class="field">
-                <div id="movement" class="editable" contenteditable="true">9m / 6q</div>
-                <span>Deslocamento</span>
-            </div>
-
-            <div class="field">
-                <div id="inspiration" class="editable" contenteditable="true">0d0</div>
-                <span>Inspiração</span>
-            </div>
-        </div>
-
-        <div id="life-bar">
-            <span id="current-life">?</span>/<span id="max-life">?</span>
-        </div>
+    <div class="checkbox-wrapper">
+        <input type="checkbox" class="native-input">
+        <span class="visual-box"></span>
     </div>
-
-    <script src="script.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="Atributos.css">
+    <title>Malakai</title>
+</head>
+
+<body>
+    <!-- PAGINA ! ATRIBUTOS E PERICIAS GERAIS -->
+    <div id="pg-attributes">
+        <!-- Barra de navegação principal -->
+        <div id="home-container">
+            <div id="account"></div>
+            <div id="logo">Malakai</div>
+            <div id="config"></div>
+        </div>
+
+        <!-- Informações gerais do personagem -->
+        <div id="character-info">
+            <div class="editable-container">
+                <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+                <span class="editable-label">Proficiência</span>
+            </div>
+            <div class="editable-container">
+                <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+                <span class="editable-label">Ca</span>
+            </div>
+            <div class="editable-container">
+                <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+                <span class="editable-label">Ca Mod</span>
+            </div>
+            <div class="editable-container">
+                <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+                <span class="editable-label">Iniciativa</span>
+            </div>
+            <div class="editable-container">
+                <div class="editable-bottom-label" contenteditable="true"></div>
+                <span class="editable-label">Deslocamento</span>
+            </div>
+            <div class="editable-container">
+                <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+                <span class="editable-label">Percepção Passiva</span>
+            </div>
+            <div class="editable-container">
+                <div class="editable-bottom-label" contenteditable="true"></div>
+                <span class="editable-label">Inspiração</span>
+            </div>
+        </div>
+
+        <hr class="temp-divider">
+
+        <!-- Informações de vida -->
+        <div id="life-info">
+
+            <!-- Conjunto da barra de vida (Titulo, barra e controles) -->
+            <div id="life-bar-container">
+                <span id="life-bar-label">VIDA</span>
+
+                <!-- Barra principal -->
+                <div id="bar-container">
+                    <div id="life-bar-percentage"></div>
+                    <div id="life-amounts">
+                        <p style="background: none;"><span id="current-life" contenteditable="true"
+                                inputmode="numeric">0</span>
+                            / <span id="max-life" contenteditable="true" inputmode="numeric">0</span></p>
+
+                    </div>
+                </div>
+
+                <!-- Controles da barra -->
+                <div id="life-bar-controls">
+                    <div>⮜⮜⮜</div>
+                    <div>⮜⮜</div>
+                    <div>⮜</div>
+                    <div>-</div>
+                    <div id="life-changer" contenteditable="true" inputmode="numeric">0</div>
+                    <div>+</div>
+                    <div>⮞</div>
+                    <div>⮞⮞</div>
+                    <div>⮞⮞⮞</div>
+                </div>
+            </div>
+
+            <!-- Informações extras de vida -->
+            <div id="life-subinfo">
+                <div class="editable-container">
+                    <div class="editable-bottom-label" contenteditable="true"></div>
+                    <span class="editable-label">Dados de Vida</span>
+                </div>
+                <div class="editable-container">
+                    <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+                    <span class="editable-label">Vida Temporária</span>
+                </div>
+                <div class="editable-container">
+                    <div class="editable-bottom-label" contenteditable="true"></div>
+                    <span class="editable-label">Testes Contra a Morte</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Atributos do personagem -->
+        <div id="attributes-container" class="editable-container">
+            <span class="editable-label">Atributos</span>
+            <div id="attribute-separator-line"></div>
+
+            <div id="attributes">
+                <fieldset class="attribute-fieldset">
+                    <legend class="attribute-title">For</legend>
+                    <div class="attribute-value" contenteditable="true" inputmode="numeric"></div>
+                    <span class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="tr"></span>
+                </fieldset>
+                <fieldset class="attribute-fieldset">
+                    <legend class="attribute-title">Des</legend>
+                    <div class="attribute-value" contenteditable="true" inputmode="numeric"></div>
+                    <span class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="tr"></span>
+                </fieldset>
+                <fieldset class="attribute-fieldset">
+                    <legend class="attribute-title">Con</legend>
+                    <div class="attribute-value" contenteditable="true" inputmode="numeric"></div>
+                    <span class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="tr"></span>
+                </fieldset>
+                <fieldset class="attribute-fieldset">
+                    <legend class="attribute-title">Int</legend>
+                    <div class="attribute-value" contenteditable="true" inputmode="numeric"></div>
+                    <span class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="tr"></span>
+                </fieldset>
+                <fieldset class="attribute-fieldset">
+                    <legend class="attribute-title">Sab</legend>
+                    <div class="attribute-value" contenteditable="true" inputmode="numeric"></div>
+                    <span class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="tr"></span>
+                </fieldset>
+                <fieldset class="attribute-fieldset">
+                    <legend class="attribute-title">Car</legend>
+                    <div class="attribute-value" contenteditable="true" inputmode="numeric"></div>
+                    <span class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="tr"></span>
+                </fieldset>
+            </div>
+        </div>
+
+        <!-- Testes de Resistência -->
+        <div id="resistance-tests-container">
+            <div id="saves-separator-line"></div>
+            <span class="editable-label">Testes de Resistência</span>
+        </div>
+
+        <!-- <hr class="temp-divider"> -->
+
+        <!-- Perícias -->
+        <div id="skills-container">
+            <span class="editable-label">Perícias</span>
+            <div id="skills-separator-line"></div>
+
+            <div id="skills">
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Acrobacia</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des" selected class="standard-skill-attribute">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int">Int</option>
+                            <option value="sab">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Arcanismo</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int" selected class="standard-skill-attribute">Int</option>
+                            <option value="sab">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Atletismo</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for" selected class="standard-skill-attribute">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int">Int</option>
+                            <option value="sab">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Atuação</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int">Int</option>
+                            <option value="sab">Sab</option>
+                            <option value="car" selected class="standard-skill-attribute">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Blefar</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int">Int</option>
+                            <option value="sab">Sab</option>
+                            <option value="car" selected class="standard-skill-attribute">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Furtividade</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des" selected class="standard-skill-attribute">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int">Int</option>
+                            <option value="sab">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">História</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int" selected class="standard-skill-attribute">Int</option>
+                            <option value="sab">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Intimidação</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int">Int</option>
+                            <option value="sab">Sab</option>
+                            <option value="car" selected class="standard-skill-attribute">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Intuição</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int">Int</option>
+                            <option value="sab" selected class="standard-skill-attribute">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Investigação</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int" selected class="standard-skill-attribute">Int</option>
+                            <option value="sab">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Lidar com Animais</span>
+                    <!-- <span class="skill-name">Adestramento</span> -->
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int">Int</option>
+                            <option value="sab" selected class="standard-skill-attribute">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Medicina</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int">Int</option>
+                            <option value="sab" selected class="standard-skill-attribute">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Natureza</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int" selected class="standard-skill-attribute">Int</option>
+                            <option value="sab">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Percepção</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int">Int</option>
+                            <option value="sab" selected class="standard-skill-attribute">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Persuasão</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int">Int</option>
+                            <option value="sab">Sab</option>
+                            <option value="car" selected class="standard-skill-attribute">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Prestidigitação</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int" selected class="standard-skill-attribute">Int</option>
+                            <option value="sab">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Religião</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int" selected class="standard-skill-attribute">Int</option>
+                            <option value="sab">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" class="native-input">
+                        <span class="visual-box"></span>
+                    </div>
+                    <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span class="skill-name">Sobrevivência</span>
+                    <div class="select-container">
+                        <span class="select-holder">(</span>
+                        <select class="custom-select">
+                            <option value="for">For</option>
+                            <option value="des">Des</option>
+                            <option value="con">Con</option>
+                            <option value="int">Int</option>
+                            <option value="sab" selected class="standard-skill-attribute">Sab</option>
+                            <option value="car">Car</option>
+                        </select>
+                        <span class="select-holder">)</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

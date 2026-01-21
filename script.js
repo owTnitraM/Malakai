@@ -46,3 +46,30 @@ let c = {
         sobrevivencia: false
     }
 }
+
+const skills = {
+    acrobacia: document.getElementById('acrobacia'),
+    arcanismo: document.getElementById('arcanismo'),
+    atletismo: document.getElementById('atletismo'),
+    atuacao: document.getElementById('atuacao'),
+    blefar: document.getElementById('blefar'),
+    furtividade: document.getElementById('furtividade'),
+    historia: document.getElementById('historia'),
+    intimidacao: document.getElementById('intimidacao'),
+    intuicao: document.getElementById('intuicao'),
+    investigacao: document.getElementById('investigacao'),
+    lidar_com_animais: document.getElementById('lidar_com_animais'),
+    medicina: document.getElementById('medicina'),
+    natureza: document.getElementById('natureza'),
+    percepcao: document.getElementById('percepcao'),
+    persuasao: document.getElementById('persuasao'),
+    prestidigitacao: document.getElementById('prestidigitacao'),
+    religiao: document.getElementById('religiao'),
+    sobrevivencia: document.getElementById('sobrevivencia'),
+}
+
+function calculateSkills(){
+    
+}
+
+// const calculate = setInterval(calculateSkills, 5000);
