@@ -10,72 +10,65 @@
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
     <style>
-        .checkbox-wrapper {
-            position: relative;
-            width: 24px;
-            height: 24px;
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, auto);
+            /* 3 linhas automáticas */
+            gap: 15px;
+            /* O "mapa" do seu layout: */
+            grid-template-areas:
+                "A A A"
+                /* Item 1: 3 colunas */
+                "B B C"
+                /* Item 2: 2 colunas | Item 3: começa aqui */
+                "D E C";
+            /* Item 4 | Item 5 | Item 3: termina aqui */
         }
 
-        /* O segredo: o input invisível fica por cima de tudo */
-        .native-input {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
-            z-index: 2;
-            /* Garante que o clique atinja o input */
-            margin: 0;
+        /* Atribui cada item à sua letra no mapa */
+        .item-1 {
+            grid-area: A;
         }
 
-        /* O quadrado (borda) */
-        .visual-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 2px solid #333;
-            background-color: white;
-            z-index: 1;
-            /* Fica atrás do input invisível */
-            box-sizing: border-box;
+        .item-2 {
+            grid-area: B;
         }
 
-        /* O preenchimento quadrado interno */
-        .visual-box::after {
-            content: "";
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            right: 2px;
-            bottom: 2px;
-            background-color: orangered;
-            opacity: 0;
-            /* Escondido por padrão */
-            transition: opacity 0.1s ease;
+        .item-3 {
+            grid-area: C;
         }
 
-        /* Quando o input (que está por cima) for marcado, mostra o preenchimento no span (que está atrás) */
-        .native-input:checked~.visual-box::after {
-            opacity: 1;
+        .item-4 {
+            grid-area: D;
         }
 
-        /* Opcional: muda a borda quando marcado */
-        .native-input:checked~.visual-box {
-            /* border-color: #2196F3; */
+        .item-5 {
+            grid-area: E;
+        }
+
+        /* Estilo visual base */
+        .grid-container>div {
+            background: #1a1a1a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #333;
         }
     </style>
     <title>Ficha RPG</title>
 </head>
 
 <body>
-    <div class="checkbox-wrapper">
-        <input type="checkbox" class="native-input">
-        <span class="visual-box"></span>
+    <div class="grid-container">
+        <div class="item-1">1 (3 Colunas / Row 1)</div>
+        <div class="item-2">2 (2 Colunas / Row 2)</div>
+        <div class="item-3">3 (1 Coluna / Row 2)</div>
+        <div class="item-4">4 (1 Coluna / Row 3)</div>
+        <div class="item-5">5 (1 Coluna / 2 Rows de altura)</div>
     </div>
+
+
 </body>
 
 </html>
