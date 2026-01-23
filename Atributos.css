@@ -158,7 +158,7 @@
 		height: 100%;
 		background: linear-gradient(90deg, #690000, #c00000);
 		box-shadow: 0 0 10px rgba(255, 75, 43, 0.75);
-		transition: width 0.3s ease-in-out;
+		transition: width 0.75s ease-in-out;
 	}
 
 	#life-amounts {
@@ -195,6 +195,11 @@
 		outline: none;
 		padding: 0;
 		border-bottom: solid 2px var(--underline-color);
+	}
+
+	.life-control {
+		cursor: pointer;
+		user-select: none;
 	}
 
 	/* ATRRIBUTES CSS */
@@ -709,7 +714,7 @@
 		height: 100%;
 		background: linear-gradient(90deg, #690000, #c00000);
 		box-shadow: 0 0 10px rgba(255, 75, 43, 0.75);
-		transition: width 0.3s ease-in-out;
+		transition: width 0.75s ease-in-out;
 	}
 
 	#life-amounts {
@@ -746,6 +751,11 @@
 		outline: none;
 		padding: 0;
 		border-bottom: solid 2px var(--underline-color);
+	}
+
+	.life-control {
+		cursor: pointer;
+		user-select: none;
 	}
 
 	#attributes-container {
@@ -946,7 +956,7 @@
 	.checkbox-wrapper {
 		position: relative;
 		/* width: 20%; */
-		min-width: 25px;
+		min-width: 23px;
 		aspect-ratio: 1/1;
 	}
 
@@ -982,10 +992,10 @@
 	.visual-box::after {
 		content: "";
 		position: absolute;
-/* 		top: 15%;
+		/* 		top: 15%;
 		left: 15%;
 		right: 15%;
-		bottom: 15%; */	
+		bottom: 15%; */
 		top: 0%;
 		left: 0%;
 		right: 0%;
@@ -1016,7 +1026,7 @@
 	}
 
 	.skill-name {
-		font-size: 0.9em;
+		font-size: 0.875em;
 		color: #ddd;
 	}
 
@@ -1024,7 +1034,7 @@
 		min-width: 3ch;
 		outline: none;
 		border-bottom: 1px solid #444;
-		font-size: 0.9em;
+		font-size: 0.85em;
 	}
 
 	.select-container {

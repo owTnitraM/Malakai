@@ -1,75 +1,469 @@
-let c = {
-    name: 'Carlos Matthew da Silva',
-    max_life: 56,
-    current_life: 56,
-    class: 'Mago',
-    lvl: 6,
-    proficiency: 3,
-    race: 'Human',
-    movement: '9m/6q',
-    alignment: "Chaotic Neutral",
-    player: "2nitraM",
-    att: {
-        for: 9,
-        des: 14,
-        con: 18,
-        int: 20,
-        sab: 14,
-        car: 11
-    },
-    saves: {
-        for: false,
-        des: false,
-        con: false,
-        int: true,
-        sab: true,
-        car: false
-    },
-    skills: {
-        acrobacia: false,
-        arcanismo: true,
-        atletismo: false,
-        atuacao: false,
-        blefar: false,
-        furtividade: false,
-        historia: true,
-        intimidacao: false,
-        intuicao: true,
-        investigacao: false,
-        lidar_com_animais: false,
-        medicina: true,
-        natureza: false,
-        percepcao: true,
-        persuasao: false,
-        prestidigitacao: false,
-        religiao: false,
-        sobrevivencia: false
+class BasicInfo {
+    constructor({ nome, classe, nivel, raca, antecedente, tendencia, jogador }) {
+        this.nome = nome;
+        this.classe = classe;
+        this.nivel = nivel;
+        this.raca = raca;
+        this.antecedente = antecedente;
+        this.tendencia = tendencia;
+        this.jogador = jogador;
     }
 }
 
-const skills = {
-    acrobacia: document.getElementById('acrobacia'),
-    arcanismo: document.getElementById('arcanismo'),
-    atletismo: document.getElementById('atletismo'),
-    atuacao: document.getElementById('atuacao'),
-    blefar: document.getElementById('blefar'),
-    furtividade: document.getElementById('furtividade'),
-    historia: document.getElementById('historia'),
-    intimidacao: document.getElementById('intimidacao'),
-    intuicao: document.getElementById('intuicao'),
-    investigacao: document.getElementById('investigacao'),
-    lidar_com_animais: document.getElementById('lidar_com_animais'),
-    medicina: document.getElementById('medicina'),
-    natureza: document.getElementById('natureza'),
-    percepcao: document.getElementById('percepcao'),
-    persuasao: document.getElementById('persuasao'),
-    prestidigitacao: document.getElementById('prestidigitacao'),
-    religiao: document.getElementById('religiao'),
-    sobrevivencia: document.getElementById('sobrevivencia'),
+class GeneralInfo {
+    constructor({ proficiencia, ca, ca_mod, iniciativa, deslocamento, percepcao_passiva, inspiracao }) {
+        this.proficiencia = proficiencia;
+        this.ca = ca;
+        this.ca_mod = ca_mod;
+        this.iniciativa = iniciativa;
+        this.deslocamento = deslocamento;
+        this.percepcao_passiva = percepcao_passiva;
+        this.inspiracao = inspiracao;
+    }
 }
 
-function calculateSkills(){
-    
+class Atributos {
+    constructor({ str, dex, con, int, wis, cha }) {
+        this.valores = { str, dex, con, int, wis, cha };
+    }
+
+    getMod(attr) {
+        return Math.floor((this.valores[attr] - 10) / 2);
+    }
+
+    set(attr, value) {
+        this.valores[attr] = value;
+    }
 }
 
-// const calculate = setInterval(calculateSkills, 5000);
+class Pericias {
+    constructor(atributos, bonusProficiencia = 2) {
+        this.atributos = atributos;
+        /* this.bonusProficiencia = bonusProficiencia; */
+
+        /* this.proficientes = new Set(); // pericias nas quais o personagem é proficiente */
+
+        this.bonusPericia = {}
+
+        // mapa de perícias para atributos
+        this.mapa = {
+            acrobacia: "dex",
+            adestramento: "wis",
+            arcanismo: "int",
+            atletismo: "str",
+            atuacao: "cha",
+            blefar: "cha",
+            furtividade: "dex",
+            historia: "int",
+            intimidacao: "cha",
+            intuicao: "wis",
+            investigacao: "int",
+            medicina: "wis",
+            natureza: "int",
+            percepcao: "wis",
+            persuasao: "cha",
+            prestidigitacao: "dex",
+            religiao: "int",
+            sobrevivencia: "wis",
+        };
+    }
+
+    calcularPericias() {
+        for (const skill in this.mapa) {
+            if (personagem.proficiencias.skills[skill]) {
+                this.bonusPericia[skill] = personagem.atributos.getMod(this.mapa[skill]) + personagem.generalInfo.proficiencia;
+            } else {
+                this.bonusPericia[skill] = personagem.atributos.getMod(this.mapa[skill]);
+            }
+        }
+
+    }
+
+
+    /* // marcar perícia como proficiente
+    addProficiencia(pericia) {
+        if (!(pericia in this.mapa)) {
+            throw new Error(`Perícia inválida: ${pericia}`);
+        }
+        this.proficientes.add(pericia);
+    }
+
+    // remover proficiência
+    removeProficiencia(pericia) {
+        this.proficientes.delete(pericia);
+    }
+
+    // calcular o bônus final da perícia
+    calcular(pericia) {
+        const attr = this.mapa[pericia];
+        if (!attr) throw new Error(`Perícia inválida: ${pericia}`);
+
+        let bonus = this.atributos.getMod(attr);
+
+        if (this.proficientes.has(pericia)) {
+            bonus += this.bonusProficiencia;
+        }
+
+        return bonus;
+    } */
+}
+
+class Vida {
+    constructor({ max, current }) {
+        this.max = max;
+        this.current = current;
+    }
+
+    add(v) {
+        if (this.current + v > this.max) {
+            this.current = this.max;
+        } else {
+            this.current += v;
+        }
+    }
+    sub(v) {
+        if (this.current - v < 0) {
+            this.current = 0;
+        } else {
+            this.current -= v;
+        }
+    }
+
+    setCurrent(v) {
+        this.current = v;
+    }
+
+    setMax(v) {
+        this.max = v;
+    }
+
+    getCurrent() { return this.current; }
+    getMax() { return this.max; }
+    getPercentage() { return this.current / this.max * 100 }
+}
+
+class Proficiencias {
+    constructor({ saves, skills }) {
+        this.saves = saves;
+        this.skills = skills;
+    }
+}
+
+class Renderer {
+    constructor() {
+        this.basicInfo = {
+            nome: document.getElementById('character-nome'),
+            classe: document.getElementById('character-classe'),
+            nivel: document.getElementById('character-classe'),
+            raca: document.getElementById('character-raca'),
+            antecedente: document.getElementById('character-antecedente'),
+            tendencia: document.getElementById('character-tendencia'),
+            jogador: document.getElementById('character-jogador')
+        };
+
+        this.generalInfo = {
+            proficiencia: document.getElementById('proficiencia'),
+            ca: document.getElementById('ca'),
+            ca_mod: document.getElementById('ca-mod'),
+            iniciativa: document.getElementById('iniciativa'),
+            deslocamento: document.getElementById('deslocamento'),
+            percepcao_passiva: document.getElementById('percepcao-passiva'),
+            inspiracao: document.getElementById('inspiracao')
+        };
+
+        this.atributos = {
+            raw: {
+                str: document.getElementById("attr-str"),
+                dex: document.getElementById("attr-dex"),
+                con: document.getElementById("attr-con"),
+                int: document.getElementById("attr-int"),
+                wis: document.getElementById("attr-wis"),
+                cha: document.getElementById("attr-cha"),
+            },
+            bonus: {
+                str: document.getElementById("attr-bonus-str"),
+                dex: document.getElementById("attr-bonus-dex"),
+                con: document.getElementById("attr-bonus-con"),
+                int: document.getElementById("attr-bonus-int"),
+                wis: document.getElementById("attr-bonus-wis"),
+                cha: document.getElementById("attr-bonus-cha")
+            }
+        };
+
+        this.resistencias = {
+            str: document.getElementById("res-str"),
+            dex: document.getElementById("res-dex"),
+            con: document.getElementById("res-con"),
+            int: document.getElementById("res-int"),
+            wis: document.getElementById("res-wis"),
+            cha: document.getElementById("res-cha"),
+        }
+
+        this.vida = {
+            current: document.getElementById('current-life'),
+            max: document.getElementById('max-life'),
+            bar_percentage: document.getElementById('life-bar-percentage'),
+
+            quick_changer: document.getElementById('life-changer'),
+
+            life_dice: document.getElementById('dados-de-vida'),
+            temp_life: document.getElementById('temp-life'),
+            death_saves: document.getElementById('death-saves')
+        };
+
+        this.pericias = {
+            acrobacia: document.getElementById("Acrobacia"),
+            adestramento: document.getElementById("Adestramento"),
+            arcanismo: document.getElementById("Arcanismo"),
+            atletismo: document.getElementById("Atletismo"),
+            atuacao: document.getElementById("Atuação"),
+            blefar: document.getElementById("Blefar"),
+            furtividade: document.getElementById("Furtividade"),
+            historia: document.getElementById("História"),
+            intimidacao: document.getElementById("Intimidação"),
+            intuicao: document.getElementById("Intuição"),
+            investigacao: document.getElementById("Investigação"),
+            medicina: document.getElementById("Medicina"),
+            natureza: document.getElementById("Natureza"),
+            percepcao: document.getElementById("Percepção"),
+            persuasao: document.getElementById("Persuasão"),
+            prestidigitacao: document.getElementById("Prestidigitação"),
+            religiao: document.getElementById("Religião"),
+            sobrevivencia: document.getElementById("Sobrevivência")
+        };
+
+    }
+
+    render() {
+        this.renderBasicInfo();
+        this.renderGeneralInfo();
+        this.renderVida();
+        this.renderAtributos();
+        this.renderResistencias();
+        this.renderPericias();
+    }
+
+    renderBasicInfo() {
+        this.basicInfo.nome.innerText = personagem.basicInfo.nome;
+        this.basicInfo.classe.innerText = `${personagem.basicInfo.classe} ${personagem.basicInfo.nivel}`;
+        this.basicInfo.raca.innerText = personagem.basicInfo.raca;
+        this.basicInfo.antecedente.innerText = personagem.basicInfo.antecedente;
+        this.basicInfo.tendencia.innerText = personagem.basicInfo.tendencia;
+        this.basicInfo.jogador.innerText = personagem.basicInfo.jogador;
+    }
+
+    renderGeneralInfo() {
+        this.generalInfo.proficiencia.innerText = `+${personagem.generalInfo.proficiencia}`;
+        this.generalInfo.ca_mod.innerText = `+${personagem.generalInfo.ca_mod}`;
+        this.generalInfo.ca.innerText = 10 + personagem.atributos.getMod('dex') + personagem.generalInfo.ca_mod;
+        this.generalInfo.iniciativa.innerText = `+${personagem.atributos.getMod('dex')}`;
+        this.generalInfo.deslocamento.innerText = personagem.generalInfo.deslocamento;
+        this.generalInfo.percepcao_passiva.innerText = personagem.generalInfo.percepcao_passiva;
+        this.generalInfo.inspiracao.innerText = personagem.generalInfo.inspiracao;
+    }
+
+    renderVida() {
+        this.vida.current.innerText = personagem.vida.getCurrent();
+        this.vida.max.innerText = personagem.vida.getMax();
+        this.vida.bar_percentage.style.width = `${personagem.vida.getPercentage()}%`;
+    }
+
+    renderAtributos() {
+        for (const attr in this.atributos.raw) {
+            this.atributos.raw[attr].innerText = personagem.atributos.valores[attr];
+            if (personagem.atributos.getMod(attr) > 0) {
+                this.atributos.bonus[attr].innerText = `+${personagem.atributos.getMod(attr)}`;
+            } else {
+                this.atributos.bonus[attr].innerText = `${personagem.atributos.getMod(attr)}`;
+            }
+        }
+
+    }
+
+    renderResistencias() {
+        for (const res in this.resistencias) {
+            if (personagem.proficiencias.saves[res]) {
+                if (personagem.atributos.getMod(res) + personagem.generalInfo.proficiencia > 0) {
+                    this.resistencias[res].innerText = `+${personagem.atributos.getMod(res) + personagem.generalInfo.proficiencia}`;
+                } else {
+                    this.resistencias[res].innerText = personagem.atributos.getMod(res) + personagem.generalInfo.proficiencia;
+                }
+
+                this.resistencias[res].style.border = 'solid var(--logo-and-divider-color) 1px';
+
+            } else {
+                if (personagem.atributos.getMod(res) > 0) {
+                    this.resistencias[res].innerText = `+${personagem.atributos.getMod(res)}`;
+                } else {
+                    this.resistencias[res].innerText = personagem.atributos.getMod(res);
+                }
+
+                this.resistencias[res].style.border = 'solid var(--tr-border-color) 1px';
+
+            }
+        }
+    }
+
+    renderPericias() {
+        for (const pericia in personagem.pericias.bonusPericia) {
+            if (personagem.pericias.bonusPericia[pericia] > 0) {
+                this.pericias[pericia].innerText = `+${personagem.pericias.bonusPericia[pericia]}`;
+            } else {
+                this.pericias[pericia].innerText = personagem.pericias.bonusPericia[pericia];
+            }
+
+            if (personagem.proficiencias.skills[pericia]) {
+                document.getElementById(`${this.pericias[pericia].id}-checkbox`).checked = true;
+            } else {
+                document.getElementById(`${this.pericias[pericia].id}-checkbox`).checked = false;
+            }
+        }
+    }
+}
+
+class Personagem {
+    constructor(dados) {
+        this.basicInfo = new BasicInfo(dados.basicInfo);
+        this.generalInfo = new GeneralInfo(dados.generalInfo);
+        this.atributos = new Atributos(dados.atributos);
+        this.vida = new Vida(dados.vida);
+        this.pericias = new Pericias(this.atributos, dados.generalInfo.proficiencia);
+        this.proficiencias = new Proficiencias(dados.proficiencias)
+    }
+}
+
+class Controller {
+    constructor(personagem, renderer) {
+        this.personagem = personagem;
+        this.renderer = renderer;
+        this.masterRendererCommand();
+    }
+
+    masterRendererCommand() {
+        this.renderer.render(this.personagem);
+    }
+
+    calcularPericias() {
+        this.personagem.pericias.calcularPericias();
+        this.masterRendererCommand();
+    }
+
+    causarDano(valor) {
+        this.personagem.vida.sub(valor);
+        this.masterRendererCommand();
+    }
+
+    curar(valor) {
+        this.personagem.vida.add(valor);
+        this.masterRendererCommand();
+    }
+
+    alterarAtributo(attr, valor) {
+        this.personagem.atributos.set(attr, valor);
+        this.calcularPericias()
+    }
+}
+
+let dados = {
+    basicInfo: {
+        nome: 'Carlos',
+        classe: 'Mago',
+        nivel: 6,
+        raca: 'Humano',
+        antecedente: 'Sábio',
+        tendencia: 'Caótico Neutro',
+        jogador: '2nitraM'
+    },
+
+    generalInfo: {
+        proficiencia: 3,
+        ca: 16,
+        ca_mod: 2,
+        iniciativa: 4,
+        deslocamento: '9m/6q',
+        percepcao_passiva: 15,
+        inspiracao: ''
+    },
+
+    atributos: {
+        str: 10, dex: 18, con: 18, int: 20, wis: 14, cha: 11
+    },
+
+    vida: {
+        max: 56,
+        current: 56
+    },
+
+    proficiencias: {
+        saves: {
+            str: false,
+            dex: false,
+            con: false,
+            int: true,
+            wis: true,
+            cha: false
+        },
+        skills: {
+            acrobacia: false,
+            arcanismo: true,
+            atletismo: false,
+            atuacao: false,
+            blefar: false,
+            furtividade: false,
+            historia: true,
+            intimidacao: false,
+            intuicao: true,
+            investigacao: false,
+            adestramento: false,
+            medicina: true,
+            natureza: false,
+            percepcao: true,
+            persuasao: false,
+            prestidigitacao: true,
+            religiao: false,
+            sobrevivencia: false
+        }
+    }
+}
+
+const personagem = new Personagem(dados);
+const renderer = new Renderer();
+const controller = new Controller(personagem, renderer);
+controller.calcularPericias()
+
+function quickLifeControl(type, num) {
+    if (type == 1) { controller.curar(num) }
+    else { controller.causarDano(num) }
+}
+
+function changeTrProficiency(attr) {
+    personagem.proficiencias.saves[attr] = !personagem.proficiencias.saves[attr];
+    controller.calcularPericias();
+    controller.masterRendererCommand()
+}
+
+// Escuta a mudança de todas as checkbox para recalcular a proficiencia na pericia
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+checkboxes.forEach(function (checkbox) {
+    checkbox.addEventListener('change', function (event) {
+
+        const checkboxId = event.target.id
+            .slice(0, -9)
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+
+        personagem.proficiencias.skills[checkboxId] = !personagem.proficiencias.skills[checkboxId];
+        controller.calcularPericias();
+    });
+});
+
+// Escuta por mudanças nos atributos para recalculas os bonus e pericias
+const elementos = document.querySelectorAll('.attribute-value');
+
+elementos.forEach(elemento => {
+    elemento.addEventListener('focusout', (event) => {
+        controller.alterarAtributo(`${event.target.id.slice(5)}`, event.target.innerText);
+    });
+});

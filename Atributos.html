@@ -28,27 +28,27 @@
             <img id="character-picture-img" src="./Assets/Characer-Pictures/no-picture.png" alt="">
         </div>
         <div class="editable-container">
-            <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+            <div id="character-nome" class="editable-bottom-label" contenteditable="true"></div>
             <span class="editable-label">Nome</span>
         </div>
         <div class="editable-container">
-            <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+            <div id="character-classe" class="editable-bottom-label" contenteditable="true"></div>
             <span class="editable-label">Classe e Nível</span>
         </div>
         <div class="editable-container">
-            <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+            <div id="character-raca" class="editable-bottom-label" contenteditable="true"></div>
             <span class="editable-label">Raça</span>
         </div>
         <div class="editable-container">
-            <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+            <div id="character-antecedente" class="editable-bottom-label" contenteditable="true"></div>
             <span class="editable-label">Antecedente</span>
         </div>
         <div class="editable-container">
-            <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+            <div id="character-tendencia" class="editable-bottom-label" contenteditable="true"></div>
             <span class="editable-label">Tendência</span>
         </div>
         <div class="editable-container">
-            <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+            <div id="character-jogador" class="editable-bottom-label" contenteditable="true"></div>
             <span class="editable-label">Jogador</span>
         </div>
     </div>
@@ -59,31 +59,31 @@
         <!-- Informações gerais do personagem -->
         <div id="character-info">
             <div class="editable-container">
-                <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+                <div id="proficiencia" class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
                 <span class="editable-label">Proficiência</span>
             </div>
             <div class="editable-container">
-                <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+                <div id="ca" class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
                 <span class="editable-label">Ca</span>
             </div>
             <div class="editable-container">
-                <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+                <div id="ca-mod" class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
                 <span class="editable-label">Ca Mod</span>
             </div>
             <div class="editable-container">
-                <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+                <div id="iniciativa" class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
                 <span class="editable-label">Iniciativa</span>
             </div>
             <div class="editable-container">
-                <div class="editable-bottom-label" contenteditable="true"></div>
+                <div id="deslocamento" class="editable-bottom-label" contenteditable="true"></div>
                 <span class="editable-label">Deslocamento</span>
             </div>
             <div class="editable-container">
-                <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+                <div id="percepcao-passiva" class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
                 <span class="editable-label">Percepção Passiva</span>
             </div>
             <div class="editable-container">
-                <div class="editable-bottom-label" contenteditable="true"></div>
+                <div id="inspiracao" class="editable-bottom-label" contenteditable="true"></div>
                 <span class="editable-label">Inspiração</span>
             </div>
         </div>
@@ -110,30 +110,32 @@
 
                 <!-- Controles da barra -->
                 <div id="life-bar-controls">
-                    <div>⮜⮜⮜</div>
-                    <div>⮜⮜</div>
-                    <div>⮜</div>
-                    <div>-</div>
+                    <div onclick="quickLifeControl(0, 10)" class="life-control">⮜⮜⮜</div>
+                    <div onclick="quickLifeControl(0, 5)" class="life-control">⮜⮜</div>
+                    <div onclick="quickLifeControl(0, 1)" class="life-control">⮜</div>
+                    <div onclick="quickLifeControl(0, +document.getElementById('life-changer').innerText)"
+                        class="life-control">-</div>
                     <div id="life-changer" contenteditable="true" inputmode="numeric">0</div>
-                    <div>+</div>
-                    <div>⮞</div>
-                    <div>⮞⮞</div>
-                    <div>⮞⮞⮞</div>
+                    <div onclick="quickLifeControl(1, +document.getElementById('life-changer').innerText)"
+                        class="life-control">+</div>
+                    <div onclick="quickLifeControl(1, 1)" class="life-control">⮞</div>
+                    <div onclick="quickLifeControl(1, 5)" class="life-control">⮞⮞</div>
+                    <div onclick="quickLifeControl(1, 10)" class="life-control">⮞⮞⮞</div>
                 </div>
             </div>
 
             <!-- Informações extras de vida -->
             <div id="life-subinfo">
                 <div class="editable-container">
-                    <div class="editable-bottom-label" contenteditable="true"></div>
+                    <div id="dados-de-vida" class="editable-bottom-label" contenteditable="true"></div>
                     <span class="editable-label">Dados de Vida</span>
                 </div>
                 <div class="editable-container">
-                    <div class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
+                    <div id="temp-life" class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
                     <span class="editable-label">Vida Temporária</span>
                 </div>
                 <div class="editable-container">
-                    <div class="editable-bottom-label" contenteditable="true"></div>
+                    <div id="death-saves" class="editable-bottom-label" contenteditable="true"></div>
                     <span class="editable-label">Testes Contra a Morte</span>
                 </div>
             </div>
@@ -147,39 +149,39 @@
             <div id="attributes">
                 <fieldset class="attribute-fieldset">
                     <legend class="attribute-title">For</legend>
-                    <div class="attribute-value" contenteditable="true" inputmode="numeric"></div>
-                    <span class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
-                    <span class="tr"></span>
+                    <div id="attr-str" class="attribute-value" contenteditable="true" inputmode="numeric"></div>
+                    <span id="attr-bonus-str" class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span id="res-str" class="tr" onclick="changeTrProficiency('str')"></span>
                 </fieldset>
                 <fieldset class="attribute-fieldset">
                     <legend class="attribute-title">Des</legend>
-                    <div class="attribute-value" contenteditable="true" inputmode="numeric"></div>
-                    <span class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
-                    <span class="tr"></span>
+                    <div id="attr-dex" class="attribute-value" contenteditable="true" inputmode="numeric"></div>
+                    <span id="attr-bonus-dex" class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span id="res-dex" class="tr" onclick="changeTrProficiency('dex')"></span>
                 </fieldset>
                 <fieldset class="attribute-fieldset">
                     <legend class="attribute-title">Con</legend>
-                    <div class="attribute-value" contenteditable="true" inputmode="numeric"></div>
-                    <span class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
-                    <span class="tr"></span>
+                    <div id="attr-con" class="attribute-value" contenteditable="true" inputmode="numeric"></div>
+                    <span id="attr-bonus-con" class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span id="res-con" class="tr" onclick="changeTrProficiency('con')"></span>
                 </fieldset>
                 <fieldset class="attribute-fieldset">
                     <legend class="attribute-title">Int</legend>
-                    <div class="attribute-value" contenteditable="true" inputmode="numeric"></div>
-                    <span class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
-                    <span class="tr"></span>
+                    <div id="attr-int" class="attribute-value" contenteditable="true" inputmode="numeric"></div>
+                    <span id="attr-bonus-int" class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span id="res-int" class="tr" onclick="changeTrProficiency('int')"></span>
                 </fieldset>
                 <fieldset class="attribute-fieldset">
                     <legend class="attribute-title">Sab</legend>
-                    <div class="attribute-value" contenteditable="true" inputmode="numeric"></div>
-                    <span class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
-                    <span class="tr"></span>
+                    <div id="attr-wis" class="attribute-value" contenteditable="true" inputmode="numeric"></div>
+                    <span id="attr-bonus-wis" class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span id="res-wis" class="tr" onclick="changeTrProficiency('wis')"></span>
                 </fieldset>
                 <fieldset class="attribute-fieldset">
                     <legend class="attribute-title">Car</legend>
-                    <div class="attribute-value" contenteditable="true" inputmode="numeric"></div>
-                    <span class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
-                    <span class="tr"></span>
+                    <div id="attr-cha" class="attribute-value" contenteditable="true" inputmode="numeric"></div>
+                    <span id="attr-bonus-cha" class="attribute-bonus" contenteditable="true" inputmode="tel"></span>
+                    <span id="res-cha" class="tr" onclick="changeTrProficiency('cha')"></span>
                 </fieldset>
             </div>
         </div>
@@ -204,10 +206,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Acrobacia-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Acrobacia" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Acrobacia</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -225,10 +227,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Adestramento-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Adestramento" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <!-- <span class="skill-name">Lidar com Animais</span> -->
                 <span class="skill-name">Adestramento</span>
                 <div class="select-container">
@@ -247,10 +249,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Arcanismo-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Arcanismo" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Arcanismo</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -268,10 +270,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Atletismo-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Atletismo" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Atletismo</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -289,10 +291,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Atuação-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Atuação" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Atuação</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -310,10 +312,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Blefar-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Blefar" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Blefar</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -331,10 +333,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Furtividade-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Furtividade" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Furtividade</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -352,10 +354,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="História-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="História" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">História</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -373,10 +375,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Intimidação-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Intimidação" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Intimidação</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -394,10 +396,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Intuição-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Intuição" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Intuição</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -415,10 +417,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Investigação-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Investigação" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Investigação</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -436,10 +438,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Medicina-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Medicina" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Medicina</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -457,10 +459,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Natureza-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Natureza" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Natureza</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -478,10 +480,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Percepção-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Percepção" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Percepção</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -499,10 +501,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Persuasão-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Persuasão" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Persuasão</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -520,10 +522,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Prestidigitação-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Prestidigitação" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Prestidigitação</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -541,10 +543,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Religião-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Religião" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Religião</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -562,10 +564,10 @@
 
             <div class="skill">
                 <div class="checkbox-wrapper">
-                    <input type="checkbox" class="native-input">
+                    <input id="Sobrevivência-checkbox" type="checkbox" class="native-input">
                     <span class="visual-box"></span>
                 </div>
-                <span class="skill-bonus" contenteditable="true" inputmode="tel"></span>
+                <span id="Sobrevivência" class="skill-bonus" contenteditable="true" inputmode="tel"></span>
                 <span class="skill-name">Sobrevivência</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
@@ -588,7 +590,7 @@
     <div id="pc-only-multi-page">
         magia lore sla, aq vai ter um menuzinho pra escolher
     </div>
-
+    <script src="script.js"></script>
 </body>
 
 </html>
