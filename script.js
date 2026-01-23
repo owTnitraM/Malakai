@@ -37,7 +37,7 @@ class Atributos {
 }
 
 class Pericias {
-    constructor(atributos, bonusProficiencia = 2) {
+    constructor(atributos, bonusProficiencia = 2, customSkillMap) {
         this.atributos = atributos;
         /* this.bonusProficiencia = bonusProficiencia; */
 
@@ -46,7 +46,9 @@ class Pericias {
         this.bonusPericia = {}
 
         // mapa de perícias para atributos
-        this.mapa = {
+        this.mapa = customSkillMap;
+
+        this.standardSkillMap = {
             acrobacia: "dex",
             adestramento: "wis",
             arcanismo: "int",
@@ -65,7 +67,7 @@ class Pericias {
             prestidigitacao: "dex",
             religiao: "int",
             sobrevivencia: "wis",
-        };
+        }
     }
 
     calcularPericias() {
@@ -115,6 +117,7 @@ class Vida {
     }
 
     add(v) {
+        if (this.current == 0) { return }
         if (this.current + v > this.max) {
             this.current = this.max;
         } else {
@@ -122,8 +125,9 @@ class Vida {
         }
     }
     sub(v) {
-        if (this.current - v < 0) {
+        if (this.current - v <= 0) {
             this.current = 0;
+            controller.ativarMorrendo();
         } else {
             this.current -= v;
         }
@@ -135,6 +139,9 @@ class Vida {
 
     setMax(v) {
         this.max = v;
+        if (this.max < 0) {
+            this.max = 1;
+        }
     }
 
     getCurrent() { return this.current; }
@@ -206,9 +213,12 @@ class Renderer {
 
             quick_changer: document.getElementById('life-changer'),
 
+            bar_contents: document.getElementById('death-saves-and-amounts'),
+            death_saves: document.getElementById('death-saves'),
+            heal_death: document.getElementById('heal-death'),
+
             life_dice: document.getElementById('dados-de-vida'),
             temp_life: document.getElementById('temp-life'),
-            death_saves: document.getElementById('death-saves')
         };
 
         this.pericias = {
@@ -258,7 +268,8 @@ class Renderer {
         this.generalInfo.ca.innerText = 10 + personagem.atributos.getMod('dex') + personagem.generalInfo.ca_mod;
         this.generalInfo.iniciativa.innerText = `+${personagem.atributos.getMod('dex')}`;
         this.generalInfo.deslocamento.innerText = personagem.generalInfo.deslocamento;
-        this.generalInfo.percepcao_passiva.innerText = personagem.generalInfo.percepcao_passiva;
+        /* this.generalInfo.percepcao_passiva.innerText = personagem.generalInfo.percepcao_passiva; */
+        this.generalInfo.percepcao_passiva.innerText = 10 + personagem.pericias.bonusPericia.percepcao;
         this.generalInfo.inspiracao.innerText = personagem.generalInfo.inspiracao;
     }
 
@@ -319,6 +330,19 @@ class Renderer {
             }
         }
     }
+
+    renderizarMorrendo() {
+        this.vida.death_saves.style.display = 'flex';
+        this.vida.heal_death.style.display = 'flex';
+        this.renderVida();
+    }
+
+
+    desativarMorrendo() {
+        this.vida.death_saves.style.display = 'none';
+        this.vida.heal_death.style.display = 'none';
+        this.renderVida();
+    }
 }
 
 class Personagem {
@@ -327,7 +351,7 @@ class Personagem {
         this.generalInfo = new GeneralInfo(dados.generalInfo);
         this.atributos = new Atributos(dados.atributos);
         this.vida = new Vida(dados.vida);
-        this.pericias = new Pericias(this.atributos, dados.generalInfo.proficiencia);
+        this.pericias = new Pericias(this.atributos, dados.generalInfo.proficiencia, dados.customSkillMap);
         this.proficiencias = new Proficiencias(dados.proficiencias)
     }
 }
@@ -337,6 +361,16 @@ class Controller {
         this.personagem = personagem;
         this.renderer = renderer;
         this.masterRendererCommand();
+    }
+
+    alterarVidaAtual(num) {
+        this.personagem.vida.setCurrent(num);
+        this.renderer.renderVida();
+    }
+
+    alterarVidaMaxima(num) {
+        this.personagem.vida.setMax(num);
+        this.renderer.renderVida();
     }
 
     masterRendererCommand() {
@@ -358,10 +392,25 @@ class Controller {
         this.masterRendererCommand();
     }
 
+    curarMorrendo() {
+        this.personagem.vida.current = 1;
+        renderer.desativarMorrendo();
+    }
+
+    ativarMorrendo() {
+        this.renderer.renderizarMorrendo();
+    }
+
     alterarAtributo(attr, valor) {
         this.personagem.atributos.set(attr, valor);
         this.calcularPericias()
     }
+
+    changeSkillBaseAttribute(skillName, attribute) {
+        this.personagem.pericias.mapa[skillName] = attribute;
+        this.calcularPericias()
+    }
+
 }
 
 let dados = {
@@ -423,6 +472,110 @@ let dados = {
             religiao: false,
             sobrevivencia: false
         }
+    },
+
+    customSkillMap: {
+        acrobacia: "dex",
+        adestramento: "wis",
+        arcanismo: "int",
+        atletismo: "str",
+        atuacao: "cha",
+        blefar: "cha",
+        furtividade: "dex",
+        historia: "int",
+        intimidacao: "cha",
+        intuicao: "wis",
+        investigacao: "int",
+        medicina: "wis",
+        natureza: "int",
+        percepcao: "wis",
+        persuasao: "cha",
+        prestidigitacao: "dex",
+        religiao: "int",
+        sobrevivencia: "wis",
+    }
+}
+
+let dados2 = {
+    basicInfo: {
+        nome: 'Nerine',
+        classe: 'Bruxo',
+        nivel: 10,
+        raca: 'Meio-Elfo',
+        antecedente: 'Artista',
+        tendencia: 'Neutro Bom',
+        jogador: 'Allan'
+    },
+
+    generalInfo: {
+        proficiencia: 4,
+        ca: 14,
+        ca_mod: 2,
+        iniciativa: 2,
+        deslocamento: '9m/6q',
+        percepcao_passiva: 15,
+        inspiracao: ''
+    },
+
+    atributos: {
+        str: 8, dex: 14, con: 16, int: 10, wis: 12, cha: 20
+    },
+
+    vida: {
+        max: 83,
+        current: 83
+    },
+
+    proficiencias: {
+        saves: {
+            str: false,
+            dex: false,
+            con: false,
+            int: false,
+            wis: true,
+            cha: true
+        },
+        skills: {
+            acrobacia: true,
+            arcanismo: true,
+            atletismo: false,
+            atuacao: true,
+            blefar: false,
+            furtividade: false,
+            historia: false,
+            intimidacao: true,
+            intuicao: false,
+            investigacao: false,
+            adestramento: false,
+            medicina: true,
+            natureza: false,
+            percepcao: true,
+            persuasao: false,
+            prestidigitacao: false,
+            religiao: false,
+            sobrevivencia: false
+        }
+    },
+
+    customSkillMap: {
+        acrobacia: "dex",
+        adestramento: "wis",
+        arcanismo: "int",
+        atletismo: "str",
+        atuacao: "cha",
+        blefar: "cha",
+        furtividade: "dex",
+        historia: "int",
+        intimidacao: "cha",
+        intuicao: "wis",
+        investigacao: "int",
+        medicina: "wis",
+        natureza: "int",
+        percepcao: "wis",
+        persuasao: "cha",
+        prestidigitacao: "dex",
+        religiao: "int",
+        sobrevivencia: "wis",
     }
 }
 
@@ -438,8 +591,12 @@ function quickLifeControl(type, num) {
 
 function changeTrProficiency(attr) {
     personagem.proficiencias.saves[attr] = !personagem.proficiencias.saves[attr];
-    controller.calcularPericias();
-    controller.masterRendererCommand()
+    /* controller.calcularPericias(); */
+    controller.masterRendererCommand();
+}
+
+function healDeath() {
+    controller.curarMorrendo();
 }
 
 // Escuta a mudança de todas as checkbox para recalcular a proficiencia na pericia
@@ -460,10 +617,55 @@ checkboxes.forEach(function (checkbox) {
 });
 
 // Escuta por mudanças nos atributos para recalculas os bonus e pericias
-const elementos = document.querySelectorAll('.attribute-value');
+const attribute_values = document.querySelectorAll('.attribute-value');
 
-elementos.forEach(elemento => {
+attribute_values.forEach(elemento => {
     elemento.addEventListener('focusout', (event) => {
         controller.alterarAtributo(`${event.target.id.slice(5)}`, event.target.innerText);
+    });
+});
+
+/* const attribute_bonuses = document.querySelectorAll('.attribute-bonus');
+
+ attribute_bonuses.forEach(elemento => {
+    elemento.addEventListener('focusout', (event) => {
+    });
+}); */
+
+const unfTable = {
+    for: 'str',
+    des: 'dex',
+    con: 'con',
+    int: 'int',
+    sab: 'wis',
+    car: 'cha'
+}
+
+const attribute_bonuses = document.querySelectorAll('.custom-select');
+
+attribute_bonuses.forEach(elemento => {
+    elemento.addEventListener('change', (event) => {
+        const changedSkill = event.target.id
+            .slice(0, -7)
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+
+        const attributeSelected = unfTable[event.target.value];
+
+        controller.changeSkillBaseAttribute(changedSkill, attributeSelected);
+
+    });
+});
+
+const life_numbers_listener = document.querySelectorAll('.life-numbers-forJS');
+
+life_numbers_listener.forEach(elemento => {
+    elemento.addEventListener('focusout', (event) => {
+        if (event.target.id[0] == 'm') {
+            controller.alterarVidaMaxima(event.target.innerText);
+        } else {
+            controller.alterarVidaAtual(event.target.innerText);
+        }
     });
 });

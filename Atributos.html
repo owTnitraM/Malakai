@@ -100,10 +100,51 @@
                 <!-- Barra principal -->
                 <div id="bar-container">
                     <div id="life-bar-percentage"></div>
-                    <div id="life-amounts">
+                    <!-- <div id="life-amounts">
                         <p style="background: none;"><span id="current-life" contenteditable="true"
                                 inputmode="numeric">1</span>
                             / <span id="max-life" contenteditable="true" inputmode="numeric">1</span></p>
+
+                    </div> -->
+                    <div id="death-saves-and-amounts">
+                        <div id="life-amounts">
+                            <p style="background: none;">
+                                <span id="current-life" class="life-numbers-forJS" contenteditable="true" inputmode="numeric">1</span>
+                                /
+                                <span id="max-life" class="life-numbers-forJS" contenteditable="true" inputmode="numeric">1</span>
+                            </p>
+                        </div>
+
+                        <div id="death-saves">
+
+                            <div class="checkbox-wrapper-2">
+                                <input id="death-save-failure-1" type="checkbox" class="native-input-2">
+                                <span class="visual-box-2 death-save-failures"></span>
+                            </div>
+                            <div class="checkbox-wrapper-2">
+                                <input id="death-save-failure-2" type="checkbox" class="native-input-2">
+                                <span class="visual-box-2 death-save-failures"></span>
+                            </div>
+                            <div class="checkbox-wrapper-2">
+                                <input id="death-save-failure-3" type="checkbox" class="native-input-2">
+                                <span class="visual-box-2 death-save-failures"></span>
+                            </div>
+                            <div id="death-diamond"></div>
+                            <div class="checkbox-wrapper-2">
+                                <input id="death-save-successes-3" type="checkbox" class="native-input-2">
+                                <span class="visual-box-2 death-save-successes"></span>
+                            </div>
+                            <div class="checkbox-wrapper-2">
+                                <input id="death-save-successes-2" type="checkbox" class="native-input-2">
+                                <span class="visual-box-2 death-save-successes"></span>
+                            </div>
+                            <div class="checkbox-wrapper-2">
+                                <input id="death-save-successes-1" type="checkbox" class="native-input-2">
+                                <span class="visual-box-2 death-save-successes"></span>
+                            </div>
+
+                        </div>
+                        <div id="heal-death" onclick="healDeath()">CURAR</div>
 
                     </div>
                 </div>
@@ -134,10 +175,10 @@
                     <div id="temp-life" class="editable-bottom-label" contenteditable="true" inputmode="tel"></div>
                     <span class="editable-label">Vida Temporária</span>
                 </div>
-                <div class="editable-container">
+                <!-- <div class="editable-container">
                     <div id="death-saves" class="editable-bottom-label" contenteditable="true"></div>
                     <span class="editable-label">Testes Contra a Morte</span>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -213,7 +254,7 @@
                 <span class="skill-name">Acrobacia</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Acrobacia-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des" selected class="standard-skill-attribute">Des</option>
                         <option value="con">Con</option>
@@ -235,7 +276,7 @@
                 <span class="skill-name">Adestramento</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Adestramento-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -256,7 +297,7 @@
                 <span class="skill-name">Arcanismo</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Arcanismo-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -277,7 +318,7 @@
                 <span class="skill-name">Atletismo</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Atletismo-select" class="custom-select">
                         <option value="for" selected class="standard-skill-attribute">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -298,7 +339,7 @@
                 <span class="skill-name">Atuação</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Atuação-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -319,7 +360,7 @@
                 <span class="skill-name">Blefar</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Blefar-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -340,7 +381,7 @@
                 <span class="skill-name">Furtividade</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Furtividade-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des" selected class="standard-skill-attribute">Des</option>
                         <option value="con">Con</option>
@@ -361,7 +402,7 @@
                 <span class="skill-name">História</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="História-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -382,7 +423,7 @@
                 <span class="skill-name">Intimidação</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Intimidação-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -403,7 +444,7 @@
                 <span class="skill-name">Intuição</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Intuição-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -424,7 +465,7 @@
                 <span class="skill-name">Investigação</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Investigação-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -445,7 +486,7 @@
                 <span class="skill-name">Medicina</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Medicina-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -466,7 +507,7 @@
                 <span class="skill-name">Natureza</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Natureza-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -487,7 +528,7 @@
                 <span class="skill-name">Percepção</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Percepção-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -508,7 +549,7 @@
                 <span class="skill-name">Persuasão</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Persuasão-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -529,11 +570,11 @@
                 <span class="skill-name">Prestidigitação</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Prestidigitação-select" class="custom-select">
                         <option value="for">For</option>
-                        <option value="des">Des</option>
+                        <option value="des" selected class="standard-skill-attribute">Des</option>
                         <option value="con">Con</option>
-                        <option value="int" selected class="standard-skill-attribute">Int</option>
+                        <option value="int">Int</option>
                         <option value="sab">Sab</option>
                         <option value="car">Car</option>
                     </select>
@@ -550,7 +591,7 @@
                 <span class="skill-name">Religião</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Religião-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>
@@ -571,7 +612,7 @@
                 <span class="skill-name">Sobrevivência</span>
                 <div class="select-container">
                     <span class="select-holder">(</span>
-                    <select class="custom-select">
+                    <select id="Sobrevivência-select" class="custom-select">
                         <option value="for">For</option>
                         <option value="des">Des</option>
                         <option value="con">Con</option>

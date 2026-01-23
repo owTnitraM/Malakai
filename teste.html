@@ -10,62 +10,53 @@
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
     <style>
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, auto);
-            /* 3 linhas automáticas */
-            gap: 15px;
-            /* O "mapa" do seu layout: */
-            grid-template-areas:
-                "A A A"
-                /* Item 1: 3 colunas */
-                "B B C"
-                /* Item 2: 2 colunas | Item 3: começa aqui */
-                "D E C";
-            /* Item 4 | Item 5 | Item 3: termina aqui */
+        .barra-navegacao {
+            display: flex;
+            /* Distribui o espaço igualmente entre os itens */
+            justify-content: space-between;
+            /* Alinha verticalmente ao centro */
+            align-items: center;
+
+            /* Distância das bordas para não encostarem nas laterais */
+            padding: 0 20px;
+
+            height: 60px;
+            background-color: #f4f4f4;
+
+            /* Garante que o item do meio fique exatamente no centro real, 
+     mesmo que os textos laterais tenham tamanhos diferentes */
         }
 
-        /* Atribui cada item à sua letra no mapa */
-        .item-1 {
-            grid-area: A;
+        .item {
+            flex: 1;
+            /* Faz com que todos ocupem o mesmo espaço base */
         }
 
-        .item-2 {
-            grid-area: B;
-        }
-
-        .item-3 {
-            grid-area: C;
-        }
-
-        .item-4 {
-            grid-area: D;
-        }
-
-        .item-5 {
-            grid-area: E;
-        }
-
-        /* Estilo visual base */
-        .grid-container>div {
-            background: #1a1a1a;
-            color: white;
-            padding: 20px;
+        .centro {
             text-align: center;
-            border: 1px solid #333;
+            font-weight: bold;
+        }
+
+        .item:last-child {
+            text-align: right;
+        }
+
+        /* Responsividade: Em telas muito pequenas, você pode ajustar o padding */
+        @media (max-width: 480px) {
+            .barra-navegacao {
+                padding: 0 10px;
+                font-size: 14px;
+            }
         }
     </style>
     <title>Ficha RPG</title>
 </head>
 
 <body>
-    <div class="grid-container">
-        <div class="item-1">1 (3 Colunas / Row 1)</div>
-        <div class="item-2">2 (2 Colunas / Row 2)</div>
-        <div class="item-3">3 (1 Coluna / Row 2)</div>
-        <div class="item-4">4 (1 Coluna / Row 3)</div>
-        <div class="item-5">5 (1 Coluna / 2 Rows de altura)</div>
+    <div class="barra-navegacao">
+        <div class="item">Esquerda</div>
+        <div class="item centro">Centralizado</div>
+        <div class="item">Direita</div>
     </div>
 
 
