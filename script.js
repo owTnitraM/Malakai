@@ -1,3 +1,8 @@
+/* 
+    Malakai Ver: 0.0.1
+    JavaScript Ver: 0.0.1 
+*/
+
 class BasicInfo {
     constructor({ nome, classe, nivel, raca, antecedente, tendencia, jogador }) {
         this.nome = nome;
